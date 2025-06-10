@@ -3,7 +3,7 @@ version: "3"
 services:
   opencloning:
     build: .
-    image: manulera/opencloning:local
+    image: manulera/opencloning:prod
     ports:
       - "8000:8000"
 
@@ -12,26 +12,26 @@ services:
     #   If you want to allow other origins via CORS (comma separated)
     #   IMPORTANT: Do not add a trailing slash to the URLs:
     #     > Do not use http://localhost:3000/, but http://localhost:3000
-    #     - ALLOWED_ORIGINS=http://localhost:3000,http://localhost:3001
+      # - ALLOWED_ORIGINS=http://localhost:3000,http://localhost:3001
     #
     #   If you want to use a subpath of the domain, set ROOT_PATH,
     #   this is the equivalent of --root-path in uvicorn, so the routes
     #   without this prefix will also work (e.g. / will be the same as /opencloning/).
     #   IMPORTANT: Do not add trailing slash, and don't use quotes.
-    # - ROOT_PATH=/opencloning
+      # - ROOT_PATH=/opencloning
     #
     #   Set this if you are not using "/" as rooth path. Note the trailing slash.
-    # - BACKEND_URL=/opencloning/
+      # - BACKEND_URL=/opencloning/
     #   Set this if you want to use plannotate
       - PLANNOTATE_URL=http://plannotate:8000
     # Set this if you want to use a proxy for the external requests made by the backend
     # (example is using mitmproxy locally on port 8080)
-      - PROXY_URL=http://host.docker.internal:8080
+      # - PROXY_URL=http://host.docker.internal:8080
     # Set this if you want to use a cert file for the proxy (e.g. when testing locally using mitmproxy and USE_HTTPS=true)
     # This file should be mounted. The path is absolute to the container.
-      - PROXY_CERT_FILE=/certs/proxy.pem
+      # - PROXY_CERT_FILE=/certs/proxy.pem
     # Set to true if you are using HTTPS, you will have to provide cert files (see volumes section)
-      - USE_HTTPS=true
+      # - USE_HTTPS=true
 
     volumes:
       - type: bind
