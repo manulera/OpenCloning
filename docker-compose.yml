@@ -3,7 +3,7 @@ version: "3"
 services:
   opencloning:
     build: .
-    image: manulera/opencloning:prod
+    image: manulera/opencloning:local
     ports:
       - "8000:8000"
 
@@ -24,6 +24,23 @@ services:
     # - BACKEND_URL=/opencloning/
     #   Set this if you want to use plannotate
       - PLANNOTATE_URL=http://plannotate:8000
+    # Set this if you want to use a proxy for the external requests made by the backend
+    # (example is using mitmproxy locally on port 8080)
+      - PROXY_URL=http://host.docker.internal:8080
+    # Set this if you want to use a cert file for the proxy (e.g. when testing locally using mitmproxy and USE_HTTPS=true)
+    # This file should be mounted. The path is absolute to the container.
+      - PROXY_CERT_FILE=/certs/proxy.pem
+    # Set to true if you are using HTTPS, you will have to provide cert files (see volumes section)
+      - USE_HTTPS=true
+
+    volumes:
+      - type: bind
+        # Path to your local cert files
+        source: ./certs
+        # They will be mounted as read only at /certs in the container
+        target: /certs
+        read_only: true
+
 
   plannotate:
     image: manulera/plannotate-api
