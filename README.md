@@ -43,7 +43,11 @@ You can use the backend library to script and automate cloning design. Have a lo
 You can use the image [manulera/opencloning](https://hub.docker.com/r/manulera/opencloning), and use `docker-compose.yaml` as a starting point. The important information to know is that:
 
 * The image exposes port 8000.
-* You can allow requests to the API from origins other than the frontend via CORS using ENV variables, see the [backend configuration](https://github.com/manulera/OpenCloning_backend#connecting-to-the-frontend). See the comments in the `docker-compose.yaml` file.
+* You can configure several things via ENV variables, see the comments in the `docker-compose.yaml` file:
+  * Proxy for external requests
+  * Usage of HTTPS
+  * Root path at which the app is served
+  * Allowed origins for CORS
 * This container serves both the frontend and the backend, but you can run them as separate containers (will need CORS configuration).
 
 ```bash
