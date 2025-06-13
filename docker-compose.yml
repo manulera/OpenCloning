@@ -1,5 +1,3 @@
-version: "3"
-
 services:
   opencloning:
     build: .
@@ -33,24 +31,16 @@ services:
       # - PROXY_CERT_FILE=/certs/proxy.pem
 
     # Set to true if you are using HTTPS, you will have to provide cert files (see volumes section)
-      # - USE_HTTPS=true
+      - USE_HTTPS=true
 
-    # volumes:
-      # Proxy cert (name can be set with PROXY_CERT_FILE)
-      # - type: bind
-      #   source: ./certs/proxy.pem
-      #   target: /certs/proxy.pem
-      #   read_only: true
-      # Server cert (must be named cert.pem in the volume)
-      # - type: bind
-      #   source: ./certs/cert.pem
-      #   target: /certs/cert.pem
-      #   read_only: true
-      # Server key (must be named key.pem in the volume)
-      # - type: bind
-      #   source: ./certs/key.pem
-      #   target: /certs/key.pem
-      #   read_only: true
+    volumes:
+      # Cert folder
+      # If USE_HTTPS=true, must contain certificate and key files named cert.pem and key.pem
+      # If you set PROXY_CERT_FILE, you can mount that file here
+      - type: bind
+        source: ./certs
+        target: /certs
+        read_only: true
 
 
   plannotate:
