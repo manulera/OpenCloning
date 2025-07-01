@@ -10,7 +10,7 @@ COPY ./docker_entrypoint.sh ./
 
 # To have access to envsubst
 USER root
-RUN apt-get update && apt-get install -y gettext-base
+RUN apk update --no-cache && apk add --no-cache gettext
 # Allow user backend to overwrite frontend/config.json
 RUN chown backend:backend ./frontend/config.json
 
