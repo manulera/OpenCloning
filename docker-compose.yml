@@ -31,20 +31,21 @@ services:
       # - PROXY_CERT_FILE=/certs/proxy.pem
 
     # Set to true if you are using HTTPS, you will have to provide cert files (see volumes section)
-      - USE_HTTPS=true
+      # - USE_HTTPS=true
 
     # Set if you want to restrict the access to external services (by default, all are allowed)
     # comma separated list of URLs
-      - ALLOWED_EXTERNAL_URLS=https://www.addgene.org/,https://media.addgene.org/,https://seva-plasmids.com/,https://api.ncbi.nlm.nih.gov/datasets/v2alpha/,https://eutils.ncbi.nlm.nih.gov/entrez/eutils/,https://www.snapgene.com/local/fetch.php,https://benchling.com/,https://assets.opencloning.org/annotated-igem-distribution,http://www.euroscarf.de/,https://wekwikgene.wllsb.edu.cn
+    # For a full list, see https://github.com/manulera/OpenCloning_backend/blob/master/src/opencloning/app_settings.py
+      # - ALLOWED_EXTERNAL_URLS=https://www.addgene.org/,https://media.addgene.org/,https://seva-plasmids.com/,https://api.ncbi.nlm.nih.gov/datasets/v2alpha/,https://eutils.ncbi.nlm.nih.gov/entrez/eutils/,https://www.snapgene.com/local/fetch.php,https://benchling.com/,https://assets.opencloning.org/annotated-igem-distribution,http://www.euroscarf.de/,https://wekwikgene.wllsb.edu.cn
 
-    volumes:
+    # volumes:
       # Cert folder
       # If USE_HTTPS=true, must contain certificate and key files named cert.pem and key.pem
       # If you set PROXY_CERT_FILE, you can mount that file here
-      - type: bind
-        source: ./certs
-        target: /certs
-        read_only: true
+      # - type: bind
+      #   source: ./certs
+      #   target: /certs
+      #   read_only: true
 
 
   plannotate:
