@@ -2,6 +2,7 @@
 
 ## Intro
 
+<!--main-description-start-->
 
 OpenCloning is an Open-Source web application to plan and document cloning. Users can:
 
@@ -14,14 +15,18 @@ OpenCloning is an Open-Source web application to plan and document cloning. User
 * 📜 Archive the entire cloning history in an Open format and load it later.
 * 🛠️ Create reusable cloning templates for cloning kits.
 
+<!--main-description-end-->
+
 To learn more, visit:
-* 🌐 The hosted app: https://opencloning.org/
+* 🌐 The hosted app: https://app.opencloning.org/
 * 📽️ The demo videos: https://www.youtube.com/watch?v=n0hedzvpW88&t=158s&ab_channel=Genestorian
 
 
-## :timer_clock: Getting started in 5 minutes
+<!--running-locally-start-->
 
-If you just want to try the application, the easiest way is to go to the hosted version at: [https://opencloning.org/](https://opencloning.org/).
+## ⏲️ Getting started in 5 minutes
+
+If you just want to try the application, the easiest way is to go to the hosted version at: [https://app.opencloning.org/](https://app.opencloning.org/).
 
 If you want to quickly set up a local instance of the application using docker, you can clone this repository, and from the root directory call:
 
@@ -32,7 +37,7 @@ docker-compose up
 
 The application should be running at [http://localhost:8000](http://localhost:8000).
 
-This uses the provided `docker-compose.yaml` and `config.json` files in this repository.
+This uses the provided `docker-compose.yaml`.
 
 ## Scripting
 
@@ -85,9 +90,11 @@ The code of the frontend is here: [https://github.com/manulera/OpenCloning_front
 
 The frontend application is built with react, and it is the "family tree builder" that you will see in your browser. For more info on what it does and how to install it see [this](https://github.com/manulera/OpenCloning_frontend)
 
+<!--running-locally-end-->
+
 ## About
 
-### :dna: Biological background
+### 🧬 Biological background
 
 Recombinant DNA technology is used in a variety of research and industry fields to generate new DNA molecules by combining fragments of existing ones. This means that every molecule in a laboratory collection was created by "cutting and pasting" the sequences of existing molecules.
 
@@ -116,7 +123,7 @@ From the json, you can see how wvery `entity` (a sequence) comes from a `source`
 
 If you are interested in contributing, check the [contribution guidelines](CONTRIBUTING.md).
 
-## Acknowledgements :pray:
+## Acknowledgements 🙏
 
 Thanks to [@ikayz](https://github.com/ikayz) for initial improvements to the frontend.
 
