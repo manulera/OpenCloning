@@ -38,6 +38,8 @@ jobs:
             manulera/opencloning:prod
             manulera/opencloning:${{ github.ref_name }}
           labels: ${{ steps.meta.outputs.labels }}
+          build-args: |
+            OPENCLONING_VERSION=${{ github.ref_name }}
 
       - name: Build and push Docker image (release-oc)
         if: github.event_name == 'release'
@@ -52,6 +54,7 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
             FRONTEND_TAG=prod-baseurl-opencloning
+            OPENCLONING_VERSION=${{ github.ref_name }}
 
       - name: Build and push Docker image (workflow_dispatch)
         if: github.event_name == 'workflow_dispatch'
