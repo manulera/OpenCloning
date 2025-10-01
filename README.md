@@ -100,10 +100,10 @@ Recombinant DNA technology is used in a variety of research and industry fields 
 
 The aim of this application is to provide a web interface to document the generation of new DNA molecules from existing ones, and to export this information to share it with others. You can imagine it as a family tree builder, where there are two kinds of entities:
 
-1. The DNA molecules, or `entities`.
-2. The `sources`, which are experimental steps that take 0 or more `entities` as an input, and generate a single output. There can be two kinds of `sources`:
-	1.	**`Sources` without a parent `entity`:** They represent the source of a DNA molecule received externally (e.g., a plasmid received from a collaborator or from Addgene) or a naturally occurring sequence (e.g., given by an assembly identifier and genome coordinates).
-	2. **`Sources` representing cloning steps combining existing `entities` to generate new `entities`:** They contain references to the input and output DNA sequences, the method name (digestion, ligation, etc.) and the minimal information to do the cloning step in silico.
+1. The `sequences`, which are the DNA molecules.
+2. The `sources`, which are experimental steps that take 0 or more `sequences` as an input, and generate a single output. There can be two kinds of `sources`:
+	1.	**`Sources` without a parent `sequence`:** They represent the source of a DNA molecule received externally (e.g., a plasmid received from a collaborator or from Addgene) or a naturally occurring sequence (e.g., given by an assembly identifier and genome coordinates).
+	2. **`Sources` representing cloning steps combining existing `sequences` to generate new `sequences`:** They contain references to the input and output DNA sequences, the method name (digestion, ligation, etc.) and the minimal information to do the cloning step in silico.
 
 See the figure below for an example of PCR-based gene targeting, in which a fragment of a plasmid is amplified by PCR with primers that contain 5' extensions homologous to target sequences in the genome. Cells are then transformed with the PCR fragment, which integrates into the genome through homologous recombination.
 
@@ -117,7 +117,14 @@ The data model is built using the [LinkML](https://linkml.io/) framework, and ca
 
 For an example of the data model to represent an homologous recombination, you can see [this json file](https://github.com/manulera/OpenCloning_frontend/blob/master/public/examples/homologous_recombination.json).
 
-From the json, you can see how wvery `entity` (a sequence) comes from a `source`, and every `entity` can be the input of another `source`. The application frontend provides an interface where the user can specify a `source` (with or without inputs). This `source` is sent to the backend in a `POST` request, where the step encoded in the `source` is executed, and the output `entity` is returned and displayed in the frontend. When multiple outputs could come out of a `source` (for example, a restriction enzyme digestion), the user can select which one of them is the desired output. Then the user can use the output `entity` as an input for a new `source`, and so on.
+From the json, you can see how every `sequence` comes from a `source`, and every `sequence` can be the input of another `source`. The application frontend provides an interface where the user can specify a `source` (with or without inputs). This `source` is sent to the backend in a `POST` request, where the step encoded in the `source` is executed, and the output `sequence` is returned and displayed in the frontend. When multiple outputs could come out of a `source` (for example, a restriction enzyme digestion), the user can select which one of them is the desired output. Then the user can use the output `sequence` as an input for a new `source`, and so on.
+
+## Dependencies
+
+You can find the full dependency list in the code repositories for the frontend and backend, but it's worth mentioning two key ones:
+
+* [pydna](https://github.com/pydna-group/pydna), a python library that extends [BioPython](https://biopython.org/) `Seq` and `SeqRecord` classes to represent overhangs and circularity. And implements functions to simulate DNA sequence operations (golden gate, gibson, etc.).
+* [LinkML](https://linkml.io/) a framework for developing data models, which allows users to define their data model as a yaml file, and generate code in different programming languages to work with it.
 
 ## Contributing
 

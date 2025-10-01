@@ -22,7 +22,7 @@ services:
     # use a specific version tag to pin the image
     # example: elabftw/elabimg:4.0.5
     # default value: elabftw/elabimg:stable
-    image: elabftw/elabimg:oc
+    image: elabftw/elabimg:stable
     # this ensures the container will be restarted after a reboot of the server
     # default value: always
     restart: always
