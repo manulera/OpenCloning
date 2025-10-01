@@ -123,7 +123,7 @@ From the json, you can see how every `sequence` comes from a `source`, and every
 
 You can find the full dependency list in the code repositories for the frontend and backend, but it's worth mentioning two key ones:
 
-* [pydna](https://github.com/pydna-group/pydna), a python library that extends [BioPython](https://biopython.org/) `Seq` and `SeqRecord` classes with functions to simulate DNA sequence operations.
+* [pydna](https://github.com/pydna-group/pydna), a python library that extends [BioPython](https://biopython.org/) `Seq` and `SeqRecord` classes to represent overhangs and circularity. And implements functions to simulate DNA sequence operations (golden gate, gibson, etc.).
 * [LinkML](https://linkml.io/) a framework for developing data models, which allows users to define their data model as a yaml file, and generate code in different programming languages to work with it.
 
 ## Contributing
