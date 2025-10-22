@@ -6,42 +6,67 @@ services:
       - "8000:8000"
 
     environment:
+    #  BACKEND IMAGE ENVIRONMENT VARIABLES
+    #  ===================================
     #
     #   If you want to allow other origins via CORS (comma separated)
     #   IMPORTANT: Do not add a trailing slash to the URLs:
     #     > Do not use http://localhost:3000/, but http://localhost:3000
+    #   default value: unset (http://localhost:3000 and http://localhost:5173 allowed)
       # - ALLOWED_ORIGINS=http://localhost:3000,http://localhost:3001
     #
     #   If you want to use a subpath of the domain, set ROOT_PATH,
     #   this is the equivalent of --root-path in uvicorn, so the routes
     #   without this prefix will also work (e.g. / will be the same as /opencloning/).
     #   IMPORTANT: Do not add trailing slash, and don't use quotes.
+    #   default value: ""
       # - ROOT_PATH=/opencloning
     #
-    #   Set this if you are not using "/" as rooth path. Note the trailing slash.
-      # - BACKEND_URL=/opencloning/
+    #
     #   Set this if you want to use plannotate
+    #   default value: unset
       - PLANNOTATE_URL=http://plannotate:8000
 
     # Set this if you want to use a proxy for the external requests made by the backend
     # (example is using mitmproxy locally on port 8080)
+    # default value: unset
       # - PROXY_URL=http://host.docker.internal:8080
     # Set this if you want to use a cert file for the proxy (e.g. when testing locally using mitmproxy and USE_HTTPS=true)
     # This file should be mounted. The path is absolute to the container.
+    # default value: unset
       # - PROXY_CERT_FILE=/certs/proxy.pem
 
     # Set to true if you are using HTTPS, you will have to provide cert files (see volumes section)
+    # default value: false
       # - USE_HTTPS=true
-
+    #
     # Set if you want to restrict the access to external services (by default, all are allowed)
     # comma separated list of URLs
+    # default value: unset (all are allowed)
     # For a full list, see https://github.com/manulera/OpenCloning_backend/blob/master/src/opencloning/app_settings.py
       # - ALLOWED_EXTERNAL_URLS=https://www.addgene.org/,https://media.addgene.org/,https://seva-plasmids.com/,https://api.ncbi.nlm.nih.gov/datasets/v2alpha/,https://eutils.ncbi.nlm.nih.gov/entrez/eutils/,https://www.snapgene.com/local/fetch.php,https://benchling.com/,https://assets.opencloning.org/annotated-igem-distribution,http://www.euroscarf.de/,https://wekwikgene.wllsb.edu.cn
 
+
+
+
+    # FRONTEND IMAGE ENVIRONMENT VARIABLES
+    # ===================================
+    #
+    #   Set this if you are not using "/" as rooth path. Note the trailing slash.
+    #   default: "/"
+      # - BACKEND_URL=/opencloning/
     # Set to true if you want to enable the annotation tool (plannotate), false otherwise
-      - ENABLE_PLANNOTATE=true
+    # default value: false
+      # - ENABLE_PLANNOTATE=true
     # Set to true if you want to enable the assembler tool (experimental for now), false otherwise
-      - ENABLE_ASSEMBLER=true
+    # default value: false
+      # - ENABLE_ASSEMBLER=true
+    # Set to false to hide the app bar
+    # default value: true
+      # - SHOW_APP_BAR=false
+    # Set to the appropriate value
+    # default value: ""
+      # - DATABASE=elabftw
 
     # volumes:
       # Cert folder
