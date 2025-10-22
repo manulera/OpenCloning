@@ -12,6 +12,9 @@ services:
     image: manulera/opencloningfrontend:local
     ports:
       - "3000:3000"
+    # environment:
+      # - ENABLE_PLANNOTATE=true
+      # - ENABLE_ASSEMBLER=true
 
   # plannotate:
   #   restart: always
