@@ -67,7 +67,9 @@ services:
     # Set to the appropriate value
     # default value: ""
       # - DATABASE=elabftw
-
+    # Set to true if you want to disable external requests (e.g. to AddGene, NCBI, etc.)
+    # default value: false
+      # - NO_EXTERNAL_REQUESTS=true
     # volumes:
       # Cert folder
       # If USE_HTTPS=true, must contain certificate and key files named cert.pem and key.pem
