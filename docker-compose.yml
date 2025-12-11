@@ -9,6 +9,14 @@ services:
     #  BACKEND IMAGE ENVIRONMENT VARIABLES
     #  ===================================
     #
+    #  This value limits the maximum sequence length that can be requested from the NCBI
+    #  via genome coordinates or sequenece accession (Repository > Genbank). This is to prevent
+    #  loading of entire genomes, which would take a long time and not render properly in the
+    #  frontend. The default value is 500000 base pairs.
+    #
+    #  NCBI_MAX_SEQUENCE_LENGTH=500000
+    #
+    #
     #   If you want to allow other origins via CORS (comma separated)
     #   IMPORTANT: Do not add a trailing slash to the URLs:
     #     > Do not use http://localhost:3000/, but http://localhost:3000
