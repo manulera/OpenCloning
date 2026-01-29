@@ -41,7 +41,7 @@ This uses the provided `docker-compose.yaml`.
 
 ## Scripting
 
-You can use the backend library to script and automate cloning design. Have a look at the [scripting documentation](https://github.com/manulera/OpenCloning_backend/tree/master/examples/scripting) for more information.
+You can use the backend library to script and automate cloning design. Have a look at the [scripting documentation](https://pydna.readthedocs.io/latest/notebooks/history.html) for more information.
 
 ## Running it yourself using docker in a single container
 
