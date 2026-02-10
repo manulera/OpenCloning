@@ -78,7 +78,18 @@ services:
     # Set to true if you want to disable external requests (e.g. to AddGene, NCBI, etc.)
     # default value: false
       # - NO_EXTERNAL_REQUESTS=true
-    # volumes:
+
+    # SHARED IMAGE ENVIRONMENT VARIABLES
+    # ===================================
+    #
+    # These are used by both the frontend and the backend.
+    #
+    # Include the path of a folder to be mounted in the public folder of the frontend.
+    # and that contains sequences and syntaxes that can be loaded from the frontend.
+    # default value: unset
+      - STATIC_CONTENT_PATH=assets/static_content
+
+    volumes:
       # Cert folder
       # If USE_HTTPS=true, must contain certificate and key files named cert.pem and key.pem
       # If you set PROXY_CERT_FILE, you can mount that file here
@@ -86,6 +97,13 @@ services:
       #   source: ./certs
       #   target: /certs
       #   read_only: true
+      # If STATIC_CONTENT_PATH is set, it will be mounted in the public folder of the frontend.
+      # and that contains sequences and syntaxes that can be loaded from the frontend.
+      - type: bind
+        source: ./static_content
+        target: /home/backend/frontend/assets/static_content
+        read_only: true
+
 
 
   plannotate:
