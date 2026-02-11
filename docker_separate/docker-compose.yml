@@ -9,7 +9,7 @@ services:
       - "8000:8000"
 
   opencloningfrontend:
-    image: manulera/opencloningfrontend:local
+    image: manulera/opencloningfrontend:prod
     ports:
       - "3000:3000"
     # environment:

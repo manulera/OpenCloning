@@ -1,7 +1,7 @@
 services:
   opencloning:
     build: .
-    image: manulera/opencloning:local
+    image: manulera/opencloning:prod
     ports:
       - "8000:8000"
 
