@@ -1,7 +1,7 @@
 services:
   opencloning:
     build: .
-    image: manulera/opencloning:prod
+    image: manulera/opencloning:local
     ports:
       - "8000:8000"
 
@@ -78,14 +78,11 @@ services:
     # Set to true if you want to disable external requests (e.g. to AddGene, NCBI, etc.)
     # default value: false
       # - NO_EXTERNAL_REQUESTS=true
-
-    # SHARED IMAGE ENVIRONMENT VARIABLES
-    # ===================================
-    #
-    # These are used by both the frontend and the backend.
     #
     # Include the path of a folder to be mounted in the public folder of the frontend.
     # and that contains sequences and syntaxes that can be loaded from the frontend.
+    # It MUST be a subfolder within assets/, since that's where the backend serves
+    # static content from.
     # default value: unset
       - STATIC_CONTENT_PATH=assets/static_content
 
