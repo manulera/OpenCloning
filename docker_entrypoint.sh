@@ -1,15 +1,6 @@
 set -e
 echo "ROOT_PATH: ${ROOT_PATH}"
 echo "BACKEND_URL: ${BACKEND_URL}"
-cd frontend
-# Create config.json with env vars
-echo "Generating config.json"
-envsubst < config.env.json > config.json
-echo "------------------------------------"
-cat config.json
-echo ""
-echo "------------------------------------"
-cd ..
 
 
 if [ "$USE_HTTPS" = "true" ]; then

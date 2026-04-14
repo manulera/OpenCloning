@@ -8,12 +8,6 @@ WORKDIR /home/backend
 COPY --from=frontend /build ./frontend
 COPY ./docker_entrypoint.sh ./
 
-# To have access to envsubst
-USER root
-RUN apk update --no-cache && apk add --no-cache gettext
-# Allow user backend to overwrite frontend/config.json
-RUN chown backend:backend ./frontend/config.json
-
 USER backend
 
 ENV SERVE_FRONTEND=1
@@ -27,4 +21,4 @@ ENV ENABLE_ASSEMBLER=false
 ARG OPENCLONING_VERSION=""
 ENV OPENCLONING_VERSION=${OPENCLONING_VERSION}
 
-CMD sh docker_entrypoint.sh
+CMD ["sh", "docker_entrypoint.sh"]
