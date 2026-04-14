@@ -4,6 +4,9 @@ services:
     image: manulera/opencloning:prod
     ports:
       - "8000:8000"
+    read_only: true
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=500m
 
     environment:
     #  BACKEND IMAGE ENVIRONMENT VARIABLES
@@ -34,6 +37,8 @@ services:
     #   Set this if you want to use plannotate
     #   default value: unset
       - PLANNOTATE_URL=http://plannotate:8000
+    # Necessary if you want to run the backend in a container with a read-only filesystem
+      - TMPDIR=/tmp
 
     # Set this if you want to use a proxy for the external requests made by the backend
     # (example is using mitmproxy locally on port 8080)
