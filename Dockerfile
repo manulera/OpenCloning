@@ -6,7 +6,6 @@ FROM manulera/opencloningfrontend:${FRONTEND_TAG} AS frontend
 FROM manulera/opencloningbackend:${BACKEND_TAG} AS backend
 WORKDIR /home/backend
 COPY --from=frontend /build ./frontend
-COPY ./docker_entrypoint.sh ./
 
 USER backend
 
@@ -21,4 +20,4 @@ ENV ENABLE_ASSEMBLER=false
 ARG OPENCLONING_VERSION=""
 ENV OPENCLONING_VERSION=${OPENCLONING_VERSION}
 
-CMD ["sh", "docker_entrypoint.sh"]
+CMD ["bash", "docker_entrypoint.sh"]
