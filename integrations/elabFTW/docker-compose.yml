@@ -428,7 +428,6 @@ services:
       - elabftw-net
     environment:
       - ALLOWED_ORIGINS=*
-      - ROOT_PATH=/opencloning
       - BACKEND_URL=/opencloning/
       - SHOW_APP_BAR=false
       - DATABASE=elabftw
