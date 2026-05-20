@@ -26,14 +26,6 @@ services:
     #   default value: unset (http://localhost:3000 and http://localhost:5173 allowed)
       # - ALLOWED_ORIGINS=http://localhost:3000,http://localhost:3001
     #
-    #   If you want to use a subpath of the domain, set ROOT_PATH,
-    #   this is the equivalent of --root-path in uvicorn, so the routes
-    #   without this prefix will also work (e.g. / will be the same as /opencloning/).
-    #   IMPORTANT: Do not add trailing slash, and don't use quotes.
-    #   default value: ""
-      # - ROOT_PATH=/opencloning
-    #
-    #
     #   Set this if you want to use plannotate
     #   default value: unset
       - PLANNOTATE_URL=http://plannotate:8000
@@ -64,7 +56,11 @@ services:
     # default value: unset
       # - ADDGENE_USERNAME=your_addgene_username
       # - ADDGENE_PASSWORD=your_addgene_password
-
+    # OpenCloning runs with gunicorn, by default with 2 workers that timeout after 20 seconds,
+    # you can change that with the following variables:
+    # default value: unset
+      # - GUNICORN_WORKERS=2
+      # - GUNICORN_TIMEOUT=20
 
 
 
