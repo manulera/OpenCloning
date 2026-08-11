@@ -7,6 +7,9 @@ FROM manulera/opencloningbackend:${BACKEND_TAG} AS backend
 WORKDIR /home/backend
 COPY --from=frontend /build ./frontend
 
+COPY docker_entrypoint.sh ./docker_entrypoint.sh
+RUN chmod +x ./docker_entrypoint.sh
+
 USER backend
 
 ENV SERVE_FRONTEND=1
